@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECDB Club - CLB Thương mại Điện tử & Kinh doanh Số</title>
+    <!-- Tải Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải Font Inter từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tải Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        brand: {
+                            blue: '#2563EB',
+                            lightBlue: '#3B82F6',
+                            amber: '#F59E0B',
+                            amberHover: '#D97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Tùy chỉnh thanh cuộn và hiệu ứng mượt */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .hero-pattern {
+            background-color: #0F172A;
+            background-image: radial-gradient(rgba(37, 99, 235, 0.2) 1px, transparent 1px), radial-gradient(rgba(245, 158, 11, 0.1) 1px, #0F172A 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .ai-pulse {
+            animation: pulse-ring 2.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
+
+    <!-- ================= 1. THANH ĐIỀU HƯỚNG (NAVBAR) ================= -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo CLB -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-blue to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        EC
+                    </div>
+                    <div>
+                        <span class="text-white font-bold text-lg tracking-tight block leading-none">ECDB CLUB</span>
+                        <span class="text-brand-amber text-xs font-medium tracking-wider">E-Commerce & Digital Business</span>
+                    </div>
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Giới thiệu</a>
+                    <a href="#departments" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Cơ cấu Ban</a>
+                    <a href="#events" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Sự kiện & Blog</a>
+                    <a href="#portal" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Cổng Tài liệu</a>
+                    <a href="#recruit" class="px-5 py-2.5 rounded-xl bg-brand-amber hover:bg-brand-amberHover text-navy-900 font-bold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Ứng tuyển Gen 12
+                    </a>
+                </nav>
+
+                <!-- Nút Menu Mobile -->
+                <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Giới thiệu</a>
+            <a href="#departments" class="mobile-link block px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Cơ cấu Ban</a>
+            <a href="#events" class="mobile-link block px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Sự kiện & Blog</a>
+            <a href="#portal" class="mobile-link block px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 font-medium">Cổng Tài liệu</a>
+            <a href="#recruit" class="mobile-link block px-4 py-3 mt-2 rounded-xl bg-brand-amber text-navy-900 text-center font-bold">Ứng tuyển Gen 12 ngay</a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION & THỐNG KÊ ================= -->
+    <section id="home" class="hero-pattern pt-32 pb-20 lg:pt-40 lg:pb-28 text-white relative overflow-hidden">
+        <!-- Hiệu ứng ánh sáng nền -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-72 h-72 bg-brand-amber/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Cột nội dung chính -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-brand-amber text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-brand-amber animate-ping"></span>
+                        <span>Đang mở đơn tuyển Thành viên & CTV Thế hệ thứ 12</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Kiến tạo thế hệ tiên phong <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-lightBlue via-cyan-400 to-brand-amber">Kinh doanh Số</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        <strong>ECDB Club</strong> là cộng đồng học thuật và thực chiến hàng đầu dành cho sinh viên đam mê Thương mại Điện tử, Digital Marketing, Phân tích Dữ liệu và Khởi nghiệp Số. Nơi biến ý tưởng thành dự án thực tế!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#recruit" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-blue hover:bg-blue-700 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2">
+                            <span>Đăng ký Tuyển thành viên</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#events" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold text-base transition-all flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-calendar-check text-brand-amber"></i>
+                            <span>Khám phá Sự kiện</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cột hình ảnh / Card trực quan -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-800/60 backdrop-blur-md border border-slate-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            </div>
+                            <span class="text-xs text-slate-400 font-mono">ECDB_Dashboard_2026</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-navy-900/90 border border-slate-700/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-lightBlue flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-rocket"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Thực chiến Dự án Doanh nghiệp</h4>
+                                    <p class="text-xs text-slate-400">Hợp tác trực tiếp cùng Shopee, TikTok Shop, Haravan...</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-navy-900/90 border border-slate-700/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-brand-amber flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Cuộc thi E-Commerce Quốc gia</h4>
+                                    <p class="text-xs text-slate-400">Đơn vị đăng cai Digital Business Challenge thường niên.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-navy-900/90 border border-slate-700/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Mạng lưới Mentor & Alumni</h4>
+                                    <p class="text-xs text-slate-400">Kết nối 500+ cựu thành viên đang làm việc tại các tập đoàn lớn.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Các con số ấn tượng -->
+            <div id="about" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-16 pt-12 border-t border-slate-800">
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 text-center hover:border-brand-blue/50 transition-colors">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1">120+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Thành viên hoạt động</div>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 text-center hover:border-brand-blue/50 transition-colors">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-amber mb-1">45+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Sự kiện & Workshop</div>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 text-center hover:border-brand-blue/50 transition-colors">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-lightBlue mb-1">28</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Dự án thực tế triển khai</div>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-6 text-center hover:border-brand-blue/50 transition-colors">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">30+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Doanh nghiệp đối tác</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 2. GIỚI THIỆU CƠ CẤU CÁC BAN ================= -->
+    <section id="departments" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-bold text-sm uppercase tracking-wider">Tổ chức & Vận hành</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-2 mb-4">Cơ cấu 4 Ban Chuyên Môn</h2>
+                <p class="text-slate-600 text-base">
+                    Mỗi ban là một mảnh ghép chiến lược tạo nên sức mạnh tổng hợp của ECDB Club. Bấm vào từng thẻ ban để xem chi tiết nhiệm vụ và quyền lợi.
+                </p>
+            </div>
+
+            <!-- Grid 4 Ban -->
+            <div id="departments-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Nội dung được render bằng JS để hỗ trợ tương tác Modal chi tiết -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. TIN TỨC, SỰ KIỆN & BLOG CHUYÊN SÂU ================= -->
+    <section id="events" class="py-20 bg-slate-50 border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brand-blue font-bold text-sm uppercase tracking-wider">Cập nhật & Chia sẻ</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-2">Sự kiện & Góc nhìn Chuyên sâu</h2>
+                </div>
+
+                <!-- Bộ lọc danh mục -->
+                <div class="flex flex-wrap gap-2" id="event-filters">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold bg-navy-900 text-white transition-all">Tất cả</button>
+                    <button data-filter="Workshop" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-brand-blue transition-all">Workshop</button>
+                    <button data-filter="Cuộc thi" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-brand-blue transition-all">Cuộc thi</button>
+                    <button data-filter="Blog chuyên môn" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 border border-slate-200 hover:border-brand-blue transition-all">Blog chuyên môn</button>
+                </div>
+            </div>
+
+            <!-- Danh sách thẻ sự kiện & bài viết -->
+            <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Render bằng JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. CỔNG TÀI LIỆU & KHO KIẾN THỨC NỘI BỘ ================= -->
+    <section id="portal" class="py-20 bg-white border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-blue font-bold text-sm uppercase tracking-wider">Dành cho Thành viên & Tân sinh viên</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-2 mb-4">Cổng Tài liệu & Lịch hoạt động</h2>
+                <p class="text-slate-600">
+                    Tra cứu nhanh bộ quy chế CLB, kho slide đào tạo, template kế hoạch kinh doanh và lịch sinh hoạt cố định hàng tuần.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Cột trái: Tìm kiếm & Kho tài liệu (7 cột) -->
+                <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <h3 class="text-xl font-bold text-navy-900 flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open text-brand-blue"></i>
+                            <span>Kho Tài Liệu Chuyên Môn</span>
+                        </h3>
+                        <!-- Thanh tìm kiếm nhanh -->
+                        <div class="relative w-full sm:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                            <input type="text" id="doc-search" placeholder="Tìm tài liệu, quy chế..." 
+                                class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20">
+                        </div>
+                    </div>
+
+                    <!-- Danh sách tài liệu -->
+                    <div id="documents-list" class="space-y-3">
+                        <!-- Render bằng JS -->
+                    </div>
+                </div>
+
+                <!-- Cột phải: Lịch hoạt động định kỳ theo tuần (5 cột) -->
+                <div class="lg:col-span-5 bg-navy-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i class="fa-regular fa-clock text-brand-amber"></i>
+                            <span>Lịch Sinh Hoạt Tuần</span>
+                        </h3>
+                        <span class="px-3 py-1 rounded-full bg-brand-blue/20 text-brand-lightBlue text-xs font-semibold">Học kỳ I - 2026</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-2xl bg-slate-800/70 border border-slate-700/70">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-brand-amber font-bold text-sm">Thứ Ba | 18:30 - 20:30</span>
+                                <span class="text-xs px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300">Phòng B302</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">Training Chuyên môn & Case Study</h4>
+                            <p class="text-xs text-slate-400 mt-1">Đào tạo kỹ năng vận hành sàn TMĐT, chạy quảng cáo & phân tích chỉ số.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-800/70 border border-slate-700/70">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-brand-amber font-bold text-sm">Thứ Năm | 19:00 - 21:00</span>
+                                <span class="text-xs px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300">Google Meet</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">Họp Giao ban & Tiến độ Dự án</h4>
+                            <p class="text-xs text-slate-400 mt-1">Cập nhật KPI các ban và nghiệm thu sản phẩm truyền thông tuần.</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-800/70 border border-slate-700/70">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-brand-amber font-bold text-sm">Thứ Bảy | 08:30 - 11:30</span>
+                                <span class="text-xs px-2.5 py-0.5 rounded-md bg-purple-500/20 text-purple-300">Hội trường A</span>
+                            </div>
+                            <h4 class="font-bold text-white text-sm">ECDB Talkshow / Bonding Nội bộ</h4>
+                            <p class="text-xs text-slate-400 mt-1">Giao lưu cùng diễn giả khách mời hoặc hoạt động gắn kết thành viên.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. FORM ĐĂNG KÝ TUYỂN THÀNH VIÊN / CTV ================= -->
+    <section id="recruit" class="py-20 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
+                <!-- Header Form -->
+                <div class="bg-gradient-to-r from-navy-900 via-navy-800 to-brand-blue p-8 sm:p-10 text-white text-center">
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-brand-amber text-navy-900 font-bold text-xs uppercase tracking-wider mb-3">
+                        Recruitment Gen 12
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Đơn Đăng Ký Trở Thành Thành Viên ECDB</h2>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+                        Hạn chót nộp đơn: <strong>23:59 ngày 30/11/2026</strong>. Hãy điền đầy đủ thông tin bên dưới để chúng mình hiểu hơn về bạn!
+                    </p>
+                </div>
+
+                <!-- Nội dung Form -->
+                <div class="p-6 sm:p-10">
+                    <form id="recruitment-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Họ và tên <span class="text-rose-500">*</span></label>
+                                <input type="text" id="reg-name" required placeholder="Nguyễn Văn A"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Mã số sinh viên <span class="text-rose-500">*</span></label>
+                                <input type="text" id="reg-id" required placeholder="VD: 20261234"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Email sinh viên / cá nhân <span class="text-rose-500">*</span></label>
+                                <input type="email" id="reg-email" required placeholder="email@sv.edu.vn"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Số điện thoại (Zalo) <span class="text-rose-500">*</span></label>
+                                <input type="tel" id="reg-phone" required placeholder="0912 345 678"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Ban Nguyện vọng 1 <span class="text-rose-500">*</span></label>
+                                <select id="reg-dept1" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                                    <option value="">-- Chọn ban ưu tiên 1 --</option>
+                                    <option value="Ban Chuyên môn - Kỹ thuật">Ban Chuyên môn - Kỹ thuật</option>
+                                    <option value="Ban Truyền thông - Sự kiện">Ban Truyền thông - Sự kiện</option>
+                                    <option value="Ban Đối ngoại - Tài trợ">Ban Đối ngoại - Tài trợ</option>
+                                    <option value="Ban Nhân sự - Nội vụ">Ban Nhân sự - Nội vụ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy-900 mb-2">Ban Nguyện vọng 2 (Không bắt buộc)</label>
+                                <select id="reg-dept2"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm">
+                                    <option value="Không có">-- Không chọn --</option>
+                                    <option value="Ban Chuyên môn - Kỹ thuật">Ban Chuyên môn - Kỹ thuật</option>
+                                    <option value="Ban Truyền thông - Sự kiện">Ban Truyền thông - Sự kiện</option>
+                                    <option value="Ban Đối ngoại - Tài trợ">Ban Đối ngoại - Tài trợ</option>
+                                    <option value="Ban Nhân sự - Nội vụ">Ban Nhân sự - Nội vụ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-navy-900 mb-2">Giới thiệu bản thân & Lý do bạn muốn gia nhập ECDB <span class="text-rose-500">*</span></label>
+                            <textarea id="reg-bio" rows="4" required placeholder="Chia sẻ đôi nét về thế mạnh, kinh nghiệm hoặc kỳ vọng của bạn khi tham gia CLB..."
+                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 text-sm"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-4 rounded-xl bg-brand-blue hover:bg-blue-700 text-white font-bold text-base shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Gửi Đơn Đăng Ký Ứng Tuyển</span>
+                        </button>
+                    </form>
+
+                    <!-- Hộp thông báo xác nhận sau khi gửi thành công -->
+                    <div id="recruit-success" class="hidden text-center py-8 space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-navy-900">Đăng ký thành công!</h3>
+                        <p id="recruit-success-msg" class="text-slate-600 max-w-md mx-auto text-sm leading-relaxed"></p>
+                        <button type="button" id="reset-recruit-btn"
+                            class="px-6 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-navy-900 font-semibold text-sm transition-colors">
+                            Gửi đơn đăng ký khác
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-navy-900 text-slate-400 py-14 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-slate-800">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-extrabold text-lg">EC</div>
+                        <span class="text-white font-bold text-lg">ECDB CLUB</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Câu lạc bộ Thương mại Điện tử & Kinh doanh Số. Kết nối tri thức – Thực chiến dự án – Bứt phá tương lai.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Liên kết nhanh</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#departments" class="hover:text-brand-amber transition-colors">Cơ cấu các ban</a></li>
+                        <li><a href="#events" class="hover:text-brand-amber transition-colors">Sự kiện & Blog chuyên sâu</a></li>
+                        <li><a href="#portal" class="hover:text-brand-amber transition-colors">Kho tài liệu & Quy chế</a></li>
+                        <li><a href="#recruit" class="hover:text-brand-amber transition-colors">Tuyển thành viên Gen 12</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Thông tin liên hệ</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-brand-amber"></i> Văn phòng CLB - Tầng 2 Nhà C, Khuôn viên Đại học</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-envelope text-brand-amber"></i> contact@ecdbclub.edu.vn</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-phone text-brand-amber"></i> 0987 654 321 (Ban Nhân sự)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs gap-4">
+                <p>&copy; 2026 ECDB Club. Bảo lưu mọi quyền.</p>
+                <div class="flex space-x-4 text-base">
+                    <a href="#home" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#home" class="hover:text-white transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#home" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#home" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL CHI TIẾT BAN / BÀI VIẾT / TÀI LIỆU ================= -->
+    <div id="global-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-900/75 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 animate-fade-in">
+            <div class="sticky top-0 bg-white/95 backdrop-blur px-6 py-4 border-b border-slate-100 flex justify-between items-center z-10">
+                <span id="modal-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-brand-blue">Chi tiết</span>
+                <button id="close-modal-btn" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="modal-body" class="p-6 sm:p-8">
+                <!-- Nội dung động -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= HỘP THÔNG BÁO NHỎ (TOAST NOTIFICATION) ================= -->
+    <div id="toast-box" class="fixed top-24 right-5 z-50 hidden max-w-sm bg-navy-900 text-white px-5 py-4 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 transition-all">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <p id="toast-text" class="text-sm font-medium"></p>
+    </div>
+
+    <!-- ================= 6. TRỢ LÝ AI HỎI ĐÁP CLB (FLOATING WIDGET) ================= -->
+    <div class="fixed bottom-5 right-5 z-40">
+        <!-- Nút mở Chat AI -->
+        <button id="ai-toggle-btn" class="ai-pulse w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-brand-blue to-indigo-600 text-white shadow-2xl flex items-center justify-center text-2xl hover:scale-105 transition-transform focus:outline-none">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+
+        <!-- Cửa sổ Chat AI -->
+        <div id="ai-chat-window" class="hidden fixed bottom-24 right-4 left-4 sm:left-auto sm:right-5 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[75vh]">
+            <!-- Header Chat -->
+            <div class="bg-navy-900 p-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-lg relative">
+                        <i class="fa-solid fa-robot"></i>
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 absolute bottom-0 right-0 border-2 border-navy-900"></span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Trợ lý AI ECDB</h4>
+                        <p class="text-xs text-slate-300">Giải đáp 24/7 về CLB & TMĐT</p>
+                    </div>
+                </div>
+                <button id="ai-close-btn" class="text-slate-400 hover:text-white p-1.5">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <!-- Khung tin nhắn -->
+            <div id="ai-messages" class="p-4 space-y-3 overflow-y-auto flex-1 bg-slate-50 min-h-[280px] max-h-[380px] text-sm">
+                <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-full bg-brand-blue text-white flex items-center justify-center text-xs shrink-0 mt-0.5">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none p-3 text-slate-700 shadow-sm">
+                        Xin chào! Mình là <strong>ECDB Assistant</strong>. Bạn cần hỏi về <em>quy trình tuyển Gen 12, thông tin 4 ban chuyên môn, lịch sự kiện</em> hay kiến thức Thương mại điện tử nào không?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gợi ý câu hỏi nhanh -->
+            <div class="px-3 py-2 bg-slate-100 border-t border-slate-200 flex gap-1.5 overflow-x-auto no-scrollbar">
+                <button type="button" class="ai-quick-btn shrink-0 px-3 py-1 rounded-full bg-white border border-slate-300 text-xs text-slate-700 hover:border-brand-blue hover:text-brand-blue transition-colors">
+                    Quy trình tuyển Gen 12?
+                </button>
+                <button type="button" class="ai-quick-btn shrink-0 px-3 py-1 rounded-full bg-white border border-slate-300 text-xs text-slate-700 hover:border-brand-blue hover:text-brand-blue transition-colors">
+                    Nên chọn ban nào?
+                </button>
+                <button type="button" class="ai-quick-btn shrink-0 px-3 py-1 rounded-full bg-white border border-slate-300 text-xs text-slate-700 hover:border-brand-blue hover:text-brand-blue transition-colors">
+                    Lịch Workshop sắp tới?
+                </button>
+            </div>
+
+            <!-- Ô nhập tin nhắn -->
+            <form id="ai-chat-form" class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+                <input type="text" id="ai-input" placeholder="Nhập câu hỏi của bạn..." required
+                    class="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-100 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-blue/30">
+                <button type="submit" id="ai-send-btn" class="w-10 h-10 rounded-xl bg-brand-blue hover:bg-blue-700 text-white flex items-center justify-center transition-colors shrink-0">
+                    <i class="fa-solid fa-paper-plane text-sm"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // --- 1. DỮ LIỆU MẪU CHO CLB ---
+        const departmentsData = [
+            {
+                id: 'tech',
+                name: 'Ban Chuyên môn - Kỹ thuật',
+                shortDesc: 'Nghiên cứu xu hướng TMĐT, vận hành sàn số, phân tích dữ liệu và xây dựng nội dung học thuật.',
+                icon: 'fa-laptop-code',
+                color: 'blue',
+                tasks: [
+                    'Xây dựng đề thi, case study cho các cuộc thi học thuật cấp trường và toàn quốc.',
+                    'Tổ chức các buổi training nội bộ về Shopee/TikTok Shop, SEO, Google Analytics, AI trong kinh doanh.',
+                    'Thực hiện các dự án tư vấn chuyển đổi số và vận hành gian hàng cho doanh nghiệp đối tác.'
+                ],
+                requirements: 'Yêu thích công nghệ, tư duy logic, ham học hỏi về nền tảng số (chưa có kinh nghiệm sẽ được đào tạo từ đầu).'
+            },
+            {
+                id: 'media',
+                name: 'Ban Truyền thông - Sự kiện',
+                shortDesc: 'Sáng tạo nội dung đa nền tảng, thiết kế ấn phẩm và tổ chức các sự kiện bùng nổ của CLB.',
+                icon: 'fa-bullhorn',
+                color: 'amber',
+                tasks: [
+                    'Quản lý hình ảnh thương hiệu trên Fanpage, TikTok, Website của ECDB Club.',
+                    'Thiết kế ấn phẩm (Poster, Banner, Video Recap) và viết bài truyền thông chiến dịch.',
+                    'Lên ý tưởng kịch bản, điều phối sân khấu cho Talkshow, Workshop và Cuộc thi lớn.'
+                ],
+                requirements: 'Năng động, giàu ý tưởng sáng tạo, biết cơ bản về Canva/CapCut/Adobe là một điểm cộng lớn.'
+            },
+            {
+                id: 'external',
+                name: 'Ban Đối ngoại - Tài trợ',
+                shortDesc: 'Cầu nối chiến lược giữa CLB với các doanh nghiệp, diễn giả chuyên gia và nhà tài trợ.',
+                icon: 'fa-handshake',
+                color: 'emerald',
+                tasks: [
+                    'Tìm kiếm, đàm phán và ký kết hợp tác tài trợ hiện kim/hiện vật cho các sự kiện của CLB.',
+                    'Mời diễn giả, ban giám khảo là các CEO, Founder, Quản lý cấp cao trong ngành TMĐT.',
+                    'Duy trì mối quan hệ bền vững với mạng lưới đối tác doanh nghiệp và các CLB bạn.'
+                ],
+                requirements: 'Giao tiếp tự tin, khéo léo, tác phong chuyên nghiệp và có tinh thần trách nhiệm cao.'
+            },
+            {
+                id: 'hr',
+                name: 'Ban Nhân sự - Nội vụ',
+                shortDesc: 'Giữ lửa văn hóa nội bộ, quản lý hồ sơ thành viên, tài chính và tổ chức hoạt động gắn kết.',
+                icon: 'fa-people-group',
+                color: 'purple',
+                tasks: [
+                    'Điều phối quy trình tuyển thành viên mới, đánh giá KPI và khen thưởng định kỳ.',
+                    'Tổ chức các buổi Bonding, Teambuilding, Sinh nhật thành viên để gắn kết đại gia đình ECDB.',
+                    'Quản lý ngân sách, cơ sở vật chất và hành chính nội bộ của Câu lạc bộ.'
+                ],
+                requirements: 'Tận tâm, tỉ mỉ, biết lắng nghe và yêu thích việc kết nối mọi người.'
+            }
+        ];
+
+        const eventsData = [
+            {
+                id: 1,
+                category: 'Workshop',
+                title: 'Workshop: Bùng nổ doanh số TikTok Shop & Affiliate 2026',
+                date: '28/11/2026 | 18:00 - 21:00',
+                location: 'Hội trường Lớn A1',
+                summary: 'Cập nhật thuật toán phân phối mới nhất, công thức xây kênh triệu view và tối ưu chi phí quảng cáo GMV Max từ chuyên gia thực chiến.',
+                content: 'Buổi Workshop mang đến góc nhìn toàn diện về hệ sinh thái Shoppertainment. Diễn giả khách mời là Trưởng phòng Vận hành Sàn tại E-Com Agency sẽ trực tiếp mổ xẻ 3 chiến dịch đạt doanh thu 2 tỷ/tháng của sinh viên khởi nghiệp.',
+                isUpcoming: true
+            },
+            {
+                id: 2,
+                category: 'Cuộc thi',
+                title: 'Digital Business Challenge 2026: Chinh phục Thị trường Số',
+                date: '05/12/2026 - 20/12/2026',
+                location: 'Toàn quốc (Online & Offline)',
+                summary: 'Sân chơi học thuật lớn nhất năm với tổng giải thưởng lên tới 50 triệu đồng cùng cơ hội thực tập trực tiếp tại các tập đoàn TMĐT.',
+                content: 'Các đội thi gồm 3-4 thành viên sẽ trải qua 3 vòng thi: Trắc nghiệm kiến thức số, Giải Business Case thực tế từ doanh nghiệp tài trợ và Đêm Chung kết Pitching trực tiếp trước hội đồng giám khảo.',
+                isUpcoming: true
+            },
+            {
+                id: 3,
+                category: 'Blog chuyên môn',
+                title: 'Ứng dụng AI Agent trong Tự động hóa Chăm sóc Khách hàng TMĐT',
+                date: '15/11/2026',
+                location: 'Ban Chuyên môn ECDB',
+                summary: 'Phân tích cách các doanh nghiệp bán lẻ hiện đại tích hợp AI để tăng tỷ lệ chốt đơn lên 35% và giảm chi phí vận hành.',
+                content: 'Trong kỷ nguyên thương mại hội thoại, khách hàng kỳ vọng phản hồi dưới 10 giây. Bài viết tổng hợp quy trình triển khai AI Chatbot kết nối dữ liệu tồn kho và cá nhân hóa gợi ý sản phẩm theo hành vi người dùng.',
+                isUpcoming: false
+            },
+            {
+                id: 4,
+                category: 'Workshop',
+                title: 'Data Analytics for E-Commerce: Đọc vị dữ liệu với PowerBI',
+                date: '02/12/2026 | 18:30 - 20:30',
+                location: 'Phòng Lab B204',
+                summary: 'Thực hành trực tiếp trên bộ dữ liệu 100.000 đơn hàng thật để tìm ra điểm nghẽn chuyển đổi và tối ưu biên lợi nhuận.',
+                content: 'Người tham gia cần mang theo laptop cá nhân. Ban Chuyên môn sẽ hướng dẫn cài đặt công cụ, làm sạch dữ liệu và trực quan hóa Dashboard theo dõi chỉ số ROI, CAC, CLV.',
+                isUpcoming: true
+            },
+            {
+                id: 5,
+                category: 'Blog chuyên môn',
+                title: 'Báo cáo Xu hướng Thương mại Xuyên biên giới (Cross-Border) Việt Nam',
+                date: '10/11/2026',
+                location: 'Ban Chuyên môn ECDB',
+                summary: 'Cơ hội nào cho các thương hiệu nội địa Việt Nam vươn ra thị trường Đông Nam Á và Bắc Mỹ thông qua Amazon & Shopee Global?',
+                content: 'Xuất khẩu trực tuyến B2C đang tăng trưởng hai con số mỗi năm. Bài nghiên cứu chỉ ra 4 nhóm ngành hàng tiềm năng nhất và các lưu ý pháp lý, logistics quan trọng cho người mới bắt đầu.',
+                isUpcoming: false
+            },
+            {
+                id: 6,
+                category: 'Cuộc thi',
+                title: 'ECDB Hackathon: Xây dựng Giải pháp Bán lẻ Thông minh trong 24h',
+                date: '15/01/2027',
+                location: 'Không gian Sáng tạo Hub',
+                summary: 'Thử thách tốc độ kết hợp giữa sinh viên Kinh tế và Công nghệ thông tin để tạo ra nguyên mẫu sản phẩm số.',
+                content: 'Trong vòng 24 giờ liên tục, các đội thi sẽ được cố vấn 1-1 bởi các Mentor công nghệ để hoàn thiện sản phẩm MVP giải quyết bài toán chống hàng giả hoặc tối ưu giao vận chặng cuối.',
+                isUpcoming: true
+            }
+        ];
+
+        const documentsData = [
+            { title: 'Điều lệ & Quy chế Hoạt động ECDB Club (Cập nhật 2026)', category: 'Quy chế nội bộ', type: 'PDF', size: '1.2 MB' },
+            { title: 'Cẩm nang Tân thành viên & Lộ trình phát triển Gen 12', category: 'Hướng dẫn', type: 'PDF', size: '2.4 MB' },
+            { title: 'Slide Đào tạo: Xây dựng & Tối ưu Gian hàng Shopee Chuẩn SEO', category: 'Tài liệu Chuyên môn', type: 'PPTX', size: '5.8 MB' },
+            { title: 'Template Kế hoạch Truyền thông & Dự trù Ngân sách Sự kiện', category: 'Biểu mẫu', type: 'XLSX', size: '850 KB' },
+            { title: 'Bộ Đề thi & Đáp án Mẫu Digital Business Challenge các mùa', category: 'Học thuật', type: 'ZIP', size: '12.5 MB' },
+            { title: 'Ebook: 50 Công thức Viết Content Chuyển đổi Cao trên Mạng xã hội', category: 'Tài liệu Chuyên môn', type: 'PDF', size: '3.1 MB' }
+        ];
+
+        // --- 2. HÀM TIỆN ÍCH HIỂN THỊ THÔNG BÁO (TOAST) ---
+        function showToast(message, isSuccess = true) {
+            const toastBox = document.getElementById('toast-box');
+            const toastText = document.getElementById('toast-text');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastText.textContent = message;
+            toastIcon.className = isSuccess 
+                ? 'fa-solid fa-circle-check text-emerald-400 text-xl' 
+                : 'fa-solid fa-circle-info text-brand-amber text-xl';
+
+            toastBox.classList.remove('hidden');
+            setTimeout(() => {
+                toastBox.classList.add('hidden');
+            }, 3500);
+        }
+
+        // --- 3. RENDER CƠ CẤU CÁC BAN & XỬ LÝ MODAL ---
+        function renderDepartments() {
+            const grid = document.getElementById('departments-grid');
+            const colorMap = {
+                blue: 'bg-blue-50 text-brand-blue border-blue-100 group-hover:bg-brand-blue group-hover:text-white',
+                amber: 'bg-amber-50 text-brand-amber border-amber-100 group-hover:bg-brand-amber group-hover:text-navy-900',
+                emerald: 'bg-emerald-50 text-emerald-600 border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white',
+                purple: 'bg-purple-50 text-purple-600 border-purple-100 group-hover:bg-purple-600 group-hover:text-white'
+            };
+
+            grid.innerHTML = departmentsData.map(dept => `
+                <div onclick="openDeptModal('${dept.id}')" 
+                    class="group cursor-pointer bg-slate-50 hover:bg-white rounded-3xl p-6 border border-slate-200 hover:border-brand-blue/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl ${colorMap[dept.color]} border flex items-center justify-center text-2xl mb-5 transition-colors duration-300">
+                            <i class="fa-solid ${dept.icon}"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-2 group-hover:text-brand-blue transition-colors">${dept.name}</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">${dept.shortDesc}</p>
+                    </div>
+                    <div class="flex items-center text-brand-blue font-semibold text-sm">
+                        <span>Xem nhiệm vụ & yêu cầu</span>
+                        <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openDeptModal(deptId) {
+            const dept = departmentsData.find(d => d.id === deptId);
+            if (!dept) return;
+
+            document.getElementById('modal-badge').textContent = 'Cơ cấu Ban Chuyên Môn';
+            document.getElementById('modal-body').innerHTML = `
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue text-white flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid ${dept.icon}"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-navy-900">${dept.name}</h3>
+                        <p class="text-sm text-slate-500">ECDB Club - Thế hệ thứ 12</p>
+                    </div>
+                </div>
+                <div class="space-y-5 text-sm sm:text-base text-slate-700">
+                    <div>
+                        <h4 class="font-bold text-navy-900 mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brand-blue"></i> Nhiệm vụ trọng tâm:
+                        </h4>
+                        <ul class="space-y-2 pl-5 list-disc text-slate-600">
+                            ${dept.tasks.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200/80">
+                        <h4 class="font-bold text-navy-900 mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-star text-brand-amber"></i> Yêu cầu ứng viên:
+                        </h4>
+                        <p class="text-slate-700 text-sm">${dept.requirements}</p>
+                    </div>
+                    <div class="pt-2">
+                        <button onclick="selectDeptAndScroll('${dept.name}')" 
+                            class="w-full py-3.5 rounded-xl bg-brand-blue hover:bg-blue-700 text-white font-bold transition-colors">
+                            Ứng tuyển vào ${dept.name} ngay
+                        </button>
+                    </div>
+                </div>
+            `;
+            openModal();
+        }
+
+        function selectDeptAndScroll(deptName) {
+            closeModal();
+            const selectEl = document.getElementById('reg-dept1');
+            selectEl.value = deptName;
+            document.getElementById('recruit').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Đã chọn nguyện vọng 1: ${deptName}`);
+        }
+
+        // --- 4. RENDER SỰ KIỆN & BLOG CHUYÊN SÂU ---
+        function renderEvents(filter = 'all') {
+            const grid = document.getElementById('events-grid');
+            const filtered = filter === 'all' ? eventsData : eventsData.filter(e => e.category === filter);
+
+            const badgeColors = {
+                'Workshop': 'bg-blue-100 text-brand-blue',
+                'Cuộc thi': 'bg-amber-100 text-amber-800',
+                'Blog chuyên môn': 'bg-emerald-100 text-emerald-800'
+            };
+
+            grid.innerHTML = filtered.map(item => `
+                <article class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div class="p-6 sm:p-7">
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold ${badgeColors[item.category]}">${item.category}</span>
+                            <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-calendar mr-1"></i>${item.date.split('|')[0]}</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-navy-900 mb-3 line-clamp-2 hover:text-brand-blue cursor-pointer" onclick="openEventModal(${item.id})">
+                            ${item.title}
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                            ${item.summary}
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                        <button onclick="openEventModal(${item.id})" class="text-sm font-bold text-brand-blue hover:underline">
+                            Đọc chi tiết
+                        </button>
+                        ${item.isUpcoming 
+                            ? `<button onclick="registerEvent('${item.title}')" class="px-4 py-2 rounded-xl bg-navy-900 hover:bg-brand-blue text-white text-xs font-bold transition-colors">Đăng ký tham gia</button>`
+                            : `<span class="text-xs text-slate-400 font-medium">Bài viết lưu trữ</span>`
+                        }
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function openEventModal(id) {
+            const item = eventsData.find(e => e.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-badge').textContent = item.category;
+            document.getElementById('modal-body').innerHTML = `
+                <h3 class="text-2xl font-extrabold text-navy-900 mb-3">${item.title}</h3>
+                <div class="flex flex-wrap gap-4 text-xs sm:text-sm text-slate-500 mb-6 pb-4 border-b border-slate-100">
+                    <span><i class="fa-regular fa-calendar text-brand-blue mr-1.5"></i>${item.date}</span>
+                    <span><i class="fa-solid fa-location-dot text-brand-amber mr-1.5"></i>${item.location}</span>
+                </div>
+                <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+                    <p class="font-medium text-navy-800">${item.summary}</p>
+                    <p>${item.content}</p>
+                </div>
+                ${item.isUpcoming ? `
+                    <div class="mt-8 pt-4 border-t border-slate-100">
+                        <button onclick="closeModal(); registerEvent('${item.title}')" 
+                            class="w-full py-3.5 rounded-xl bg-brand-amber hover:bg-brand-amberHover text-navy-900 font-bold transition-colors">
+                            Xác nhận Đăng ký Tham gia Sự kiện
+                        </button>
+                    </div>
+                ` : ''}
+            `;
+            openModal();
+        }
+
+        function registerEvent(title) {
+            showToast(`Đã ghi nhận đăng ký tham gia: "${title}". Vé điện tử đã sẵn sàng!`);
+        }
+
+        // --- 5. RENDER & TÌM KIẾM CỔNG TÀI LIỆU ---
+        function renderDocuments(keyword = '') {
+            const list = document.getElementById('documents-list');
+            const lower = keyword.toLowerCase().trim();
+            const filtered = documentsData.filter(d => 
+                d.title.toLowerCase().includes(lower) || d.category.toLowerCase().includes(lower)
+            );
+
+            if (filtered.length === 0) {
+                list.innerHTML = `<div class="text-center py-8 text-slate-500 text-sm">Không tìm thấy tài liệu phù hợp với từ khóa "${keyword}".</div>`;
+                return;
+            }
+
+            list.innerHTML = filtered.map(doc => `
+                <div class="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-brand-blue/50 flex items-center justify-between gap-4 transition-all">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center font-bold text-xs shrink-0">
+                            ${doc.type}
+                        </div>
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-navy-900 text-sm truncate">${doc.title}</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">${doc.category} • ${doc.size}</p>
+                        </div>
+                    </div>
+                    <button onclick="downloadDoc('${doc.title}')" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-brand-blue text-slate-700 hover:text-white text-xs font-bold transition-colors shrink-0 flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="hidden sm:inline">Tải về</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function downloadDoc(title) {
+            showToast(`Đang tải xuống tài liệu: ${title}`);
+        }
+
+        // --- 6. ĐIỀU KHIỂN MODAL & MENU MOBILE ---
+        function openModal() {
+            const modal = document.getElementById('global-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('global-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+        document.getElementById('global-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'global-modal') closeModal();
+        });
+
+        // Menu Mobile Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Bộ lọc Sự kiện
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-navy-900', 'text-white');
+                    b.classList.add('bg-white', 'text-slate-600');
+                });
+                btn.classList.remove('bg-white', 'text-slate-600');
+                btn.classList.add('bg-navy-900', 'text-white');
+                renderEvents(btn.dataset.filter);
+            });
+        });
+
+        // Tìm kiếm tài liệu
+        document.getElementById('doc-search').addEventListener('input', (e) => {
+            renderDocuments(e.target.value);
+        });
+
+        // --- 7. XỬ LÝ FORM TUYỂN THÀNH VIÊN ---
+        const recruitForm = document.getElementById('recruitment-form');
+        const recruitSuccess = document.getElementById('recruit-success');
+        const recruitSuccessMsg = document.getElementById('recruit-success-msg');
+
+        recruitForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value.trim();
+            const studentId = document.getElementById('reg-id').value.trim();
+            const dept1 = document.getElementById('reg-dept1').value;
+
+            recruitForm.classList.add('hidden');
+            recruitSuccess.classList.remove('hidden');
+            recruitSuccessMsg.innerHTML = `Cảm ơn bạn <strong>${name}</strong> (MSSV: ${studentId}) đã ứng tuyển vào <strong>${dept1}</strong>. Ban Nhân sự sẽ gửi thư mời phỏng vấn qua email trong vòng 48 giờ tới!`;
+            showToast('Gửi đơn ứng tuyển thành công!');
+        });
+
+        document.getElementById('reset-recruit-btn').addEventListener('click', () => {
+            recruitForm.reset();
+            recruitSuccess.classList.add('hidden');
+            recruitForm.classList.remove('hidden');
+        });
+
+        // --- 8. TÍCH HỢP TRỢ LÝ AI HỎI ĐÁP CLB (GEMINI API) ---
+        const aiToggleBtn = document.getElementById('ai-toggle-btn');
+        const aiCloseBtn = document.getElementById('ai-close-btn');
+        const aiChatWindow = document.getElementById('ai-chat-window');
+        const aiMessages = document.getElementById('ai-messages');
+        const aiChatForm = document.getElementById('ai-chat-form');
+        const aiInput = document.getElementById('ai-input');
+
+        aiToggleBtn.addEventListener('click', () => {
+            aiChatWindow.classList.toggle('hidden');
+            if (!aiChatWindow.classList.contains('hidden')) {
+                aiInput.focus();
+            }
+        });
+
+        aiCloseBtn.addEventListener('click', () => {
+            aiChatWindow.classList.add('hidden');
+        });
+
+        document.querySelectorAll('.ai-quick-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                aiInput.value = btn.textContent.trim();
+                aiChatForm.dispatchEvent(new Event('submit'));
+            });
+        });
+
+        function appendChatMessage(text, isUser = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = isUser ? 'flex justify-end' : 'flex items-start gap-2.5';
+
+            if (isUser) {
+                wrapper.innerHTML = `
+                    <div class="bg-brand-blue text-white rounded-2xl rounded-tr-none p-3 max-w-[82%] shadow-sm">
+                        ${escapeHtml(text)}
+                    </div>
+                `;
+            } else {
+                wrapper.innerHTML = `
+                    <div class="w-7 h-7 rounded-full bg-brand-blue text-white flex items-center justify-center text-xs shrink-0 mt-0.5">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none p-3 text-slate-700 max-w-[85%] shadow-sm leading-relaxed">
+                        ${formatAiText(text)}
+                    </div>
+                `;
+            }
+
+            aiMessages.appendChild(wrapper);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+            return wrapper;
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function formatAiText(text) {
+            return escapeHtml(text)
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+        }
+
+        async function callGeminiAssistant(userQuery) {
+            const apiKey = ""; // Canvas tự động cung cấp trong runtime
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const systemPrompt = `Bạn là Trợ lý AI chính thức của ECDB Club (Câu lạc bộ Thương mại Điện tử & Kinh doanh Số).
+Hãy trả lời thân thiện, nhiệt huyết kiểu sinh viên, ngắn gọn, súc tích bằng tiếng Việt.
+Thông tin cốt lõi về CLB để bạn tư vấn:
+- Tên: ECDB Club (E-Commerce & Digital Business Club). Quy mô: 120+ thành viên, 45+ sự kiện, 28 dự án thực tế.
+- Đang tuyển thành viên Gen 12 đến 23:59 ngày 30/11/2026 qua 3 vòng: Vòng 1 (Nộp đơn trên web) -> Vòng 2 (Làm việc nhóm giải Case) -> Vòng 3 (Phỏng vấn cá nhân). Chưa có kinh nghiệm vẫn được đào tạo từ đầu.
+- 4 Ban chuyên môn:
+  1. Ban Chuyên môn - Kỹ thuật (vận hành sàn TMĐT, phân tích dữ liệu, xây đề thi).
+  2. Ban Truyền thông - Sự kiện (thiết kế, sáng tạo nội dung, tổ chức sự kiện).
+  3. Ban Đối ngoại - Tài trợ (mời diễn giả, kết nối doanh nghiệp, xin tài trợ).
+  4. Ban Nhân sự - Nội vụ (quản lý thành viên, văn hóa nội bộ, bonding, tài chính).
+- Lịch sinh hoạt định kỳ: Thứ 3 (18:30 Training phòng B302), Thứ 5 (19:00 Họp online), Thứ 7 (08:30 Talkshow/Bonding tại Hội trường A).
+- Sự kiện sắp tới: Workshop TikTok Shop & Affiliate (28/11/2026), Cuộc thi Digital Business Challenge 2026 (05/12 - 20/12/2026).`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            const delays = [1000, 2000, 4000];
+            for (let attempt = 0; attempt <= delays.length; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Error');
+                    const result = await response.json();
+                    const reply = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (reply) return reply;
+                    throw new Error('Empty response');
+                } catch (err) {
+                    if (attempt === delays.length) {
+                        return "Hiện tại hệ thống AI đang bận một chút. Bạn có thể xem thông tin chi tiết ở các mục trên trang hoặc nhắn tin trực tiếp qua Fanpage ECDB Club nhé!";
+                    }
+                    await new Promise(res => setTimeout(res, delays[attempt]));
+                }
+            }
+        }
+
+        aiChatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = aiInput.value.trim();
+            if (!query) return;
+
+            aiInput.value = '';
+            appendChatMessage(query, true);
+
+            // Hiển thị trạng thái đang nhập
+            const loadingBubble = appendChatMessage('Đang suy nghĩ...', false);
+
+            const replyText = await callGeminiAssistant(query);
+            loadingBubble.remove();
+            appendChatMessage(replyText, false);
+        });
+
+        // --- KHỞI TẠO DỮ LIỆU BAN ĐẦU ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderDepartments();
+            renderEvents('all');
+            renderDocuments();
+        });
+    </script>
+</body>
+</html>
